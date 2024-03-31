@@ -79,12 +79,6 @@ public class EmailUtility {
      *            : Email message
      * @throws ApplicationException
      */
-    
-    //1.Method Signature:2.JavaMail Session Setup:3.Creating a Message:
-    //4.Setting From Address:5.Setting TO, CC, and BCC Addresses:
-    //6.Setting Subject:7.Setting Message Content:
-    //8.Sending the Email:
-    
     public static void sendMail(EmailMessage emailMessageDTO)
             throws ApplicationException {
 
@@ -176,7 +170,7 @@ public class EmailUtility {
             Transport.send(msg);
 
         } catch (Exception ex) {
-        	//throw new ApplicationException("Email " + ex.getMessage());
+//            throw new ApplicationException("Email " + ex.getMessage());
         }
     }
 	

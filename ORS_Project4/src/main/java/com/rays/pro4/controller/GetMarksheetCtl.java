@@ -18,123 +18,131 @@ import com.rays.pro4.Util.DataValidator;
 import com.rays.pro4.Util.PropertyReader;
 import com.rays.pro4.Util.ServletUtility;
 
+
 //TODO: Auto-generated Javadoc
 /**
- * Get Marksheet functionality Controller. Performs operation for Get Marksheet
- * 
- * @author Suraj Sahu
- */
+* Get Marksheet functionality Controller. Performs operation for Get Marksheet
+* 
+* @author Suraj Sahu
+*/
 @WebServlet(name = "GetMarksheetCtl", urlPatterns = { "/ctl/GetMarksheetCtl" })
-public class GetMarksheetCtl extends BaseCtl {
+public class GetMarksheetCtl extends BaseCtl{
 
-	private static Logger log = Logger.getLogger(GetMarksheetCtl.class);
+	  private static Logger log = Logger.getLogger(GetMarksheetCtl.class);
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see in.co.rays.ors.controller.BaseCtl#validate(javax.servlet.http.
-	 * HttpServletRequest)
-	 */
-	@Override
-	protected boolean validate(HttpServletRequest request) {
+	    /* (non-Javadoc)
+	     * @see in.co.rays.ors.controller.BaseCtl#validate(javax.servlet.http.HttpServletRequest)
+	     */
+	    @Override
+	    protected boolean validate(HttpServletRequest request) {
 
-		log.debug("GetMarksheetCTL Method validate Started");
+	        log.debug("GetMarksheetCTL Method validate Started");
 
-		boolean pass = true;
+	        boolean pass = true;
 
-		if (DataValidator.isNull(request.getParameter("rollNo"))) {
-			request.setAttribute("rollNo", PropertyReader.getValue("error.require", "Roll Number"));
-			pass = false;
-		} else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
-			request.setAttribute("rollNo", "Roll No. must be in Formate (0000XX000000)");
-			pass = false;
-		}
+	        if (DataValidator.isNull(request.getParameter("rollNo"))) {
+	            request.setAttribute("rollNo", PropertyReader.getValue("error.require", "Roll Number"));
+	            pass = false;
+	        }
+	        else if (!DataValidator.isRollNo(request.getParameter("rollNo"))) {
+				request.setAttribute("rollNo", "Roll No. must be in Formate (0000XX000000)");
+				pass = false;
+	        }
+	        
+	        log.debug("GetMarksheetCTL Method validate Ended");
+	        return pass;
+	    }
 
-		log.debug("GetMarksheetCTL Method validate Ended");
-		return pass;
-	}
+	    /* (non-Javadoc)
+	     * @see in.co.rays.ors.controller.BaseCtl#populateBean(javax.servlet.http.HttpServletRequest)
+	     */
+	    @Override
+	    protected BaseBean populateBean(HttpServletRequest request) {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see in.co.rays.ors.controller.BaseCtl#populateBean(javax.servlet.http.
-	 * HttpServletRequest)
-	 */
-	@Override
-	protected BaseBean populateBean(HttpServletRequest request) {
+	        log.debug("GetMarksheetCtl Method populatebean Started");
 
-		log.debug("GetMarksheetCtl Method populatebean Started");
-		MarksheetBean bean = new MarksheetBean();
-		bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
-		log.debug("GetMarksheetCtl Method populatebean Ended");
-		return bean;
-	}
+	        MarksheetBean bean = new MarksheetBean();
 
-	/**
-	 * Concept of Display method.
-	 *
-	 * @param request  the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException      Signals that an I/O exception has occurred.
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	    //    bean.setId(DataUtility.getLong(request.getParameter("id")));
+	        bean.setRollNo(DataUtility.getString(request.getParameter("rollNo")));
+	/*        bean.setName(DataUtility.getString(request.getParameter("name")));
+	        bean.setPhysics(DataUtility.getInt(request.getParameter("physics")));
+	        bean.setChemistry(DataUtility.getInt(request.getParameter("chemistry")));
+	        bean.setMaths(DataUtility.getInt(request.getParameter("maths")));*/
 
-		ServletUtility.forward(getView(), request, response);
-	}
+	        log.debug("GetMarksheetCtl Method populatebean Ended");
+	        return bean;
+	    }
 
-	/**
-	 * Concept of Submit Method.
-	 *
-	 * @param request  the request
-	 * @param response the response
-	 * @throws ServletException the servlet exception
-	 * @throws IOException      Signals that an I/O exception has occurred.
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	    /**
+	     * Concept of Display method.
+	     *
+	     * @param request the request
+	     * @param response the response
+	     * @throws ServletException the servlet exception
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
+	    protected void doGet(HttpServletRequest request,
+	            HttpServletResponse response) throws ServletException, IOException {
+	     
+	    	ServletUtility.forward(getView(), request, response);
+	    }
 
-		log.debug("GetMarksheetCtl Method doGet Started");
-		String op = DataUtility.getString(request.getParameter("operation"));
-		long id = DataUtility.getLong(request.getParameter("id"));
+	    /**
+	     * Concept of Submit Method.
+	     *
+	     * @param request the request
+	     * @param response the response
+	     * @throws ServletException the servlet exception
+	     * @throws IOException Signals that an I/O exception has occurred.
+	     */
+	    protected void doPost(HttpServletRequest request,
+	            HttpServletResponse response) throws ServletException, IOException {
 
-		// get model
-		MarksheetModel model = new MarksheetModel();
-		MarksheetBean bean = (MarksheetBean) populateBean(request);
+	        log.debug("GetMarksheetCtl Method doGet Started");
+	        String op = DataUtility.getString(request.getParameter("operation"));
+	        long id = DataUtility.getLong(request.getParameter("id"));
 
-		if (OP_GO.equalsIgnoreCase(op)) {
+	        // get model
+	        MarksheetModel model = new MarksheetModel();
+	        MarksheetBean bean = (MarksheetBean) populateBean(request);
 
-			try {
-				bean = model.findByRollNo(bean.getRollNo());
-				// ServletUtility.setList(list, request);
-				if (bean != null) {
-					ServletUtility.setBean(bean, request);
-				} else {
-					ServletUtility.setErrorMessage("RollNo Does Not Exists", request);
+
+	        if (OP_GO.equalsIgnoreCase(op)) {
+
+	            try {
+	                bean = model.findByRollNo(bean.getRollNo());
+	        //        ServletUtility.setList(list, request);
+	                
+	             
+	      
+	                if (bean != null) {
+	                    ServletUtility.setBean(bean, request);
+	                }else {
+	                    ServletUtility.setErrorMessage("RollNo Does Not Exists",request);
+	                    
+	                }
+	            } catch (ApplicationException e) {
+	               e.printStackTrace();
+	            	log.error(e);
+	                ServletUtility.handleException(e, request, response);
+	                return;
+	            }
+	        }
+	            else if (OP_RESET.equalsIgnoreCase(op)) {
+	            	ServletUtility.redirect(ORSView.GET_MARKSHEET_CTL, request, response);
+	            	return ;
 				}
-			} catch (ApplicationException e) {
-				e.printStackTrace();
-				log.error(e);
-				ServletUtility.handleException(e, request, response);
-				return;
-			}
-		} else if (OP_RESET.equalsIgnoreCase(op)) {
-			ServletUtility.redirect(ORSView.GET_MARKSHEET_CTL, request, response);
-			return;
-		}
-		ServletUtility.forward(getView(), request, response);
-		log.debug("MarksheetCtl Method doGet Ended");
-	}
+	        ServletUtility.forward(getView(), request, response);
+	        log.debug("MarksheetCtl Method doGet Ended");
+	    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see in.co.rays.ors.controller.BaseCtl#getView()
-	 */
-	@Override
-	protected String getView() {
-		return ORSView.GET_MARKSHEET_VIEW;
-	}
+	    /* (non-Javadoc)
+	     * @see in.co.rays.ors.controller.BaseCtl#getView()
+	     */
+	    @Override
+	    protected String getView() {
+	        return ORSView.GET_MARKSHEET_VIEW ;
+	    }
 
 }

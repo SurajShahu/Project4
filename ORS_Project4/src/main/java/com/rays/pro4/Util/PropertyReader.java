@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
  * @author Suraj Sahu
  *
  */
-//utility class for reading property values from app properties file using res bundle
+
 
 public class PropertyReader {
 
@@ -25,7 +25,7 @@ public class PropertyReader {
 	
 	
 	public static String getValue(String key) {
-		//ResourceBundle rb = ResourceBundle.getBundle("com.rays.proj4.resourcesB.System");
+
 		String val = null;
 
 		try {
@@ -35,6 +35,7 @@ public class PropertyReader {
 		}
 
 		return val;
+
 	}
 
 	/**

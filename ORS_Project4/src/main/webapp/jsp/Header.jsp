@@ -90,6 +90,17 @@
         <a href="<%=ORSView.FACULTY_LIST_CTL %>">Faculty List</b></a> |
         <a href="<%=ORSView.TIMETABLE_CTL %>" >Add TimeTable</b></a> |       
         <a href="<%=ORSView.TIMETABLE_LIST_CTL %>">TimeTable List</b></a> |
+        
+        <%-- <a href="<%=ORSView.HOTEL_CTL %>">Add Hotel</b></a> |
+        <a href="<%=ORSView.HOTEL_LIST_CTL %>">Hotel List</b></a> |--%>
+        
+        <a href="<%=ORSView.ORDER_CTL %>">Add Order</b></a> |
+        <a href="<%=ORSView.ORDER_LIST_CTL %>">Order List</b></a> | 
+        
+        <%-- <a href="<%=ORSView.PRODUCT_CTL %>">Add Product</b></a> |
+        <a href="<%=ORSView.PRODUCT_LIST_CTL %>">Product List</b></a> |  --%>
+        
+        
         <a target="blank" href="<%=ORSView.JAVA_DOC_VIEW%>">Java Doc</b></a> |
        <%
      		}

@@ -19,7 +19,8 @@
 			scope="request"></jsp:useBean>
 		<div align="center">
 
-			<h1 align="center" style="margin-bottom: -15">Change Password</h1>
+			<h1 align="center" style="margin-bottom: -15">Change
+				Password</h1>
 			<div style="height: 15px; margin-bottom: 12px">
 				<H3 align="center">
 					<font color="green"> <%=ServletUtility.getSuccessMessage(request)%>

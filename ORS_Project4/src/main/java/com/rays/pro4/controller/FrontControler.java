@@ -47,10 +47,13 @@ public class FrontControler implements Filter {
 			// Login Again");
 			ServletUtility.setErrorMessage(" Your Session has been Expired... Please Login Again", request);
 			// Set the URI
+
 			String uri = request.getRequestURI();
 			request.setAttribute("URI", uri);
 			System.out.println("URI" + uri);
+
 			ServletUtility.forward(ORSView.LOGIN_VIEW, request, response);
+			//ServletUtility.forward(ORSView.LOGIN_CTL, request, response);
 			return;
 		} else {
 		chain.doFilter(req, resp);

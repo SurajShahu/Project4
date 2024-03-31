@@ -151,6 +151,7 @@ public class MarksheetModel {
 				bean.setRollNo(rs.getString(2));
 				bean.setStudentld(rs.getLong(3));
 				bean.setName(rs.getString(4));
+				// System.out.println(bean.getName());
 				bean.setPhysics(rs.getInt(5));
 				bean.setChemistry(rs.getInt(6));
 				bean.setMaths(rs.getInt(7));
@@ -400,8 +401,10 @@ public class MarksheetModel {
 		try {
 			conn = JDBCDataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
+ 
 				MarksheetBean bean = new MarksheetBean();
 				bean.setId(rs.getInt(1));
 				bean.setRollNo(rs.getString(2));
@@ -416,6 +419,8 @@ public class MarksheetModel {
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e);
+			// throw new ApplicationException("Exception is getting meritList of
+			// Marksheet");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
 		}

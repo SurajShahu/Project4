@@ -67,6 +67,7 @@ public class UserRegistrationCtl extends BaseCtl {
 			request.setAttribute("lastName", "Last name must contains alphabet only");
 			pass = false;
 		}
+		// System.out.println(login+"sssssssssssssssssssssssssss");
 		if (DataValidator.isNull(login)) {
 			request.setAttribute("login", PropertyReader.getValue("error.require", "Login Id"));
 			pass = false;
@@ -162,6 +163,7 @@ public class UserRegistrationCtl extends BaseCtl {
 			throws ServletException, IOException {
 		log.debug("UserRegistrationCtl Method doGet Started");
 		ServletUtility.forward(getView(), request, response);
+
 	}
 
 	/**
@@ -178,6 +180,8 @@ public class UserRegistrationCtl extends BaseCtl {
 		log.debug("UserRegistrationCtl Method doPost Started");
 
 		String op = DataUtility.getString(request.getParameter("operation"));
+
+//get model
 		UserModel model = new UserModel();
 //        long id = DataUtility.getLong(request.getParameter("id"));
 
@@ -185,6 +189,7 @@ public class UserRegistrationCtl extends BaseCtl {
 			UserBean bean = (UserBean) populateBean(request);
 			try {
 				long pk = model.registerUser(bean);
+
 				bean.setId(pk);
 				// request.getSession().setAttribute("UserBean", bean);
 				ServletUtility.setSuccessMessage("User Successfully Register", request);

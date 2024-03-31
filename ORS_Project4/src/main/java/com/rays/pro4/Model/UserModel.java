@@ -49,6 +49,7 @@ public class UserModel {
 			}
 			rs.close();
 		} catch (Exception e) {
+
 			throw new DatabaseException("Exception : Exception in getting PK");
 		} finally {
 			JDBCDataSource.closeConnection(conn);
@@ -60,18 +61,25 @@ public class UserModel {
 
 	public long add(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model add Started");
+
 		String sql = "INSERT INTO ST_USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
 		Connection conn = null;
 		int pk = 0;
+
 		UserBean existbean = findByLogin(bean.getLogin());
 		if (existbean != null) {
 			throw new DuplicateRecordException("login Id already exists");
+
 		}
+
 		try {
 			conn = JDBCDataSource.getConnection();
 			pk = nextPK();
+
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt = conn.prepareStatement(sql);
+
 			pstmt.setInt(1, pk);
 			pstmt.setString(2, bean.getFirstName());
 			pstmt.setString(3, bean.getLastName());
@@ -91,6 +99,7 @@ public class UserModel {
 			pstmt.setString(16, bean.getModifiedBy());
 			pstmt.setTimestamp(17, bean.getCreatedDatetime());
 			pstmt.setTimestamp(18, bean.getModifiedDatetime());
+
 			int a = pstmt.executeUpdate();
 			System.out.println(a);
 			conn.commit();
@@ -328,6 +337,7 @@ public class UserModel {
 		if (pageSize > 0) {
 			// Calculate start record index
 			pageNo = (pageNo - 1) * pageSize;
+
 			sql.append(" Limit " + pageNo + ", " + pageSize);
 			// sql.append(" limit " + pageNo + "," + pageSize);
 		}
@@ -359,7 +369,9 @@ public class UserModel {
 				bean.setModifiedBy(rs.getString(16));
 				bean.setCreatedDatetime(rs.getTimestamp(17));
 				bean.setModifiedDatetime(rs.getTimestamp(18));
+
 				list.add(bean);
+
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -564,6 +576,7 @@ public class UserModel {
 	public long registerUser(UserBean bean) throws ApplicationException, DuplicateRecordException {
 		log.debug("Model add Started");
 		long pk = add(bean);
+
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("login", bean.getLogin());
 		map.put("password", bean.getPassword());

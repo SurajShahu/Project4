@@ -71,7 +71,7 @@ public class UserCtl extends BaseCtl {
 			request.setAttribute("firstName", PropertyReader.getValue("error.require", "First Name"));
 			pass = false;
 		} else if (!DataValidator.isName(request.getParameter("firstName"))) {
-			request.setAttribute("firstName", "First name must contains alphabet only");
+			request.setAttribute("firstName","First name must contains alphabet only");
 			pass = false;
 		}
 
@@ -108,7 +108,7 @@ public class UserCtl extends BaseCtl {
 				pass = false;
 			} else if (!DataValidator.isPassword(request.getParameter("password"))) {
 				request.setAttribute("password",
-						"Password contain 8 letters with alpha-numeric,capital letter & special Character");
+						"Password contain 8 letters with alpha-numeric,capital latter & special Character");
 				pass = false;
 			}
 
@@ -223,7 +223,7 @@ public class UserCtl extends BaseCtl {
 		}
 		log.debug("UserCtl Method doGet Ended");
 		ServletUtility.forward(getView(), request, response);
-
+	
 	}
 
 	/*
@@ -262,10 +262,10 @@ public class UserCtl extends BaseCtl {
 					System.out.println(" U ctl DoPost 33333");
 					long pk = model.add(bean);
 					// bean.setId(pk);
-					 ServletUtility.setBean(bean, request);
+					// ServletUtility.setBean(bean, request);
 
 					ServletUtility.setSuccessMessage("User is successfully Added", request);
-					// ServletUtility.forward(getView(), request, response);
+					//ServletUtility.forward(getView(), request, response);
 					bean.setId(pk);
 				}
 				/*
@@ -305,6 +305,7 @@ public class UserCtl extends BaseCtl {
 		}
 		log.debug("UserCtl Method doPostEnded");
 		ServletUtility.forward(getView(), request, response);
+
 
 	}
 

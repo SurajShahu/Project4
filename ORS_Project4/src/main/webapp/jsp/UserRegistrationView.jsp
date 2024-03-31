@@ -68,6 +68,8 @@
 					<td><input type="text" name="firstName"
 						placeholder="Enter First Name" size="25"
 						value="<%=DataUtility.getStringData(bean.getFirstName())%>"></td>
+
+
 					<td style="position: fixed"><font color="red"> <%=ServletUtility.getErrorMessage("firstName", request)%></font></td>
 				</tr>
 
@@ -110,8 +112,10 @@
 					<td>
 						<%
 							HashMap map = new HashMap();
+
 							map.put("Male", "Male");
 							map.put("Female", "Female");
+
 							String htmlList = HTMLUtility.getList("gender", bean.getGender(), map);
 						%> <%=htmlList%>
 					</td>

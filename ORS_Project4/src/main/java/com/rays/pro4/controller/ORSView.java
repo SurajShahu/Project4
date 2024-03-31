@@ -5,7 +5,6 @@ package com.rays.pro4.controller;
  *
  */
 public interface ORSView {
-
 	public String APP_CONTEXT = "/ORS_Project4";
 	public String LAYOUT_VIEW = "/BaseLayout.jsp";
 	public static String PAGE_FOLDER = "/jsp";
@@ -14,6 +13,16 @@ public interface ORSView {
 	public String MARKSHEET_LIST_VIEW = PAGE_FOLDER + "/MarksheetListView.jsp";
 	public String GET_MARKSHEET_VIEW = PAGE_FOLDER + "/GetMarksheetView.jsp";
 	public String USER_VIEW = PAGE_FOLDER + "/UserView.jsp";
+
+	public String HOTEL_VIEW = PAGE_FOLDER + "/HotelView.jsp";
+	public String ORDER_VIEW = PAGE_FOLDER + "/OrderView.jsp";
+
+	public String PRODUCT_VIEW = PAGE_FOLDER + "/ProductView.jsp";
+
+	public String HOTEL_LIST_VIEW = PAGE_FOLDER + "/HotelListView.jsp";
+	public String ORDER_LIST_VIEW = PAGE_FOLDER + "/OrderListView.jsp";
+	public String PRODUCT_LIST_VIEW = PAGE_FOLDER + "/ProductListView.jsp";
+
 	public String USER_LIST_VIEW = PAGE_FOLDER + "/UserListView.jsp";
 	public String COLLEGE_VIEW = PAGE_FOLDER + "/CollegeView.jsp";
 	public String COLLEGE_LIST_VIEW = PAGE_FOLDER + "/CollegeListView.jsp";
@@ -43,6 +52,16 @@ public interface ORSView {
 	public String MARKSHEET_LIST_CTL = APP_CONTEXT + "/ctl/MarksheetListCtl";
 	public String USER_CTL = APP_CONTEXT + "/ctl/UserCtl";
 	public String USER_LIST_CTL = APP_CONTEXT + "/ctl/UserListCtl";
+
+	public String HOTEL_CTL = APP_CONTEXT + "/ctl/HotelCtl";
+	public String HOTEL_LIST_CTL = APP_CONTEXT + "/ctl/HotelListCtl";
+
+	public String ORDER_CTL = APP_CONTEXT + "/ctl/OrderCtl";
+	public String ORDER_LIST_CTL = APP_CONTEXT + "/ctl/OrderListCtl";
+
+	public String PRODUCT_CTL = APP_CONTEXT + "/ctl/ProductCtl";
+	public String PRODUCT_LIST_CTL = APP_CONTEXT + "/ctl/ProductListCtl";
+
 	public String COLLEGE_CTL = APP_CONTEXT + "/ctl/CollegeCtl";
 	public String COLLEGE_LIST_CTL = APP_CONTEXT + "/ctl/CollegeListCtl";
 	public String STUDENT_CTL = APP_CONTEXT + "/ctl/StudentCtl";

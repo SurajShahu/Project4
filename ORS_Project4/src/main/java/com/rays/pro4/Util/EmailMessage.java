@@ -10,23 +10,27 @@ package com.rays.pro4.Util;
 
 public class EmailMessage {
 
-	private String to = null;
-
-	private String from = null;
-
-	private String cc = null;
-
-	private String bcc = null;
-
-	private String subject = null;
-
-	private String message = null;
-
-	private int messageType = TEXT_MSG;
-
-	public static final int HTML_MSG = 1;
-
-	public static final int TEXT_MSG = 2;
+	
+	
+	private String to=null;
+	
+	private String from=null;
+	
+	private String cc=null;
+	
+	
+	
+	private String bcc=null;
+	
+	private String subject=null;
+	
+	private String message=null;
+	
+	private int messageType= TEXT_MSG;
+	
+	public static final int HTML_MSG=1;
+	
+	public static final int TEXT_MSG=2;
 
 	public String getTo() {
 		return to;
@@ -84,4 +88,5 @@ public class EmailMessage {
 		this.messageType = messageType;
 	}
 
+	
 }

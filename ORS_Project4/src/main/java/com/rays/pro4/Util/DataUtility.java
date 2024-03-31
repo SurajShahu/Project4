@@ -16,10 +16,10 @@ public class DataUtility {
 	/**
 	 * Application Date Format
 	 */
-	
+
 	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
-	//public static final String APP_DATE_FORMAT = "yyyy-mm-dd";
-	
+	// public static final String APP_DATE_FORMAT = "yyyy-mm-dd";
+
 	public static final String APP_TIME_FORMAT = "MM/dd/yyyy HH:mm:ss";
 
 	/**
@@ -56,6 +56,13 @@ public class DataUtility {
 			return "";
 		}
 	}
+
+	/*
+	 * public static String getIntData(Object val) { if(val!=null)
+	 * val=Integer.parseInt((String) val);
+	 * 
+	 * if (val.equals("0")) { return ""; } else { return String.valueOf(val); } }
+	 */
 
 	/**
 	 * Converts String into Integer

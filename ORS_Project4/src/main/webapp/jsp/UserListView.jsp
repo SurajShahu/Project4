@@ -17,11 +17,10 @@
 <script src="<%=ORSView.APP_CONTEXT%>/js/jquery.min.js"></script>
 <script src="<%=ORSView.APP_CONTEXT%>/js/Checkbox11.js"></script>
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- <script>
 $( function() {
 	  $( "#abcd" ).datepicker({
@@ -44,26 +43,37 @@ $( function() {
 		scope="request"></jsp:useBean>
 	<%@include file="Header.jsp"%>
 
+
 	<form action="<%=ORSView.USER_LIST_CTL%>" method="post">
+
 		<center>
+
 			<div align="center">
 				<h1>User List</h1>
 				<h3>
 					<font color="red"><%=ServletUtility.getErrorMessage(request)%></font>
 					<font color="green"><%=ServletUtility.getSuccessMessage(request)%></font>
 				</h3>
+
 			</div>
+
 			<%
 				List rlist = (List) request.getAttribute("RoleList");
+
 				List ulist = (List) request.getAttribute("LoginId");
+
 				int next = DataUtility.getInt(request.getAttribute("nextlist").toString());
 			%>
+
+
 			<%
 				int pageNo = ServletUtility.getPageNo(request);
 				int pageSize = ServletUtility.getPageSize(request);
 				int index = ((pageNo - 1) * pageSize) + 1;
+
 				List list = ServletUtility.getList(request);
 				Iterator<UserBean> it = list.iterator();
+
 				if (list.size() != 0) {
 			%>
 			<table width="100%" align="center">
@@ -72,17 +82,31 @@ $( function() {
 					<td align="center"><label>FirstName</font> :
 					</label> <input type="text" name="firstName" placeholder="Enter First Name"
 						value="<%=ServletUtility.getParameter("firstName", request)%>">
+
 						<label></font> </label> <%-- <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist) %> --%>
+
 						<label>LoginId</font> :
 					</label> <input type="text" name="loginid" placeholder="Enter Login-Id"
 						value="<%=ServletUtility.getParameter("login", request)%>">
-						&emsp; <label>Role</font> : <!-- Convert the integer to its string representation -->
-					</label> <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist)%>
-						&emsp; <%-- <label>Last name</font> : <!-- Convert the integer to its string representation -->
-					</label> <%=HTMLUtility.getList("lastname", bean.getLastName(), ulist)%> --%>
-						&nbsp; &nbsp; <input type="submit" name="operation"
+						&emsp; 
+						
+						<label>Role</font> :
+					</label> <%=HTMLUtility.getList("roleid", String.valueOf(bean.getRoleId()), rlist) %>
+						&nbsp;
+						
+						
+						<%-- <label>Date of Birth</font> :
+					</label> <input type="text" name="dateofb" id="abcd" placeholder="Enter dob"
+						value="<%=ServletUtility.getParameter("dateofb", request)%>">
+						
+						
+						&emsp; --%>
+						
+						 <%-- <%=HTMLUtility.getList("loginid", String.valueOf(bean.getRoleId()), ulist)%>
+ --%> &nbsp; <input type="submit" name="operation"
 						value="<%=UserListCtl.OP_SEARCH%>"> &nbsp; <input
 						type="submit" name="operation" value="<%=UserListCtl.OP_RESET%>">
+
 					</td>
 				</tr>
 			</table>
@@ -97,7 +121,7 @@ $( function() {
 					<th>S.No.</th>
 					<th>FirstName</th>
 					<th>LastName</th>
-					<th>Role</th>
+					<th>Role</th> 
 					<th>LoginId</th>
 					<th>Gender</th>
 					<th>Date Of Birth</th>
@@ -122,7 +146,7 @@ $( function() {
 					<td><%=index++%></td>
 					<td><%=bean.getFirstName()%></td>
 					<td><%=bean.getLastName()%></td>
-					<td><%=rolebean.getName()%></td>
+					<td><%=rolebean.getName() %></td>
 					<td><%=bean.getLogin()%></td>
 					<td><%=bean.getGender()%></td>
 					<td><%=bean.getDob()%></td>
@@ -171,6 +195,9 @@ $( function() {
 					<td align="right"><input type="submit" name="operation"
 						value="<%=UserListCtl.OP_NEXT%>"
 						<%=(list.size() < pageSize || next == 0) ? "disabled" : ""%>></td>
+
+
+
 				</tr>
 			</table>
 			<%

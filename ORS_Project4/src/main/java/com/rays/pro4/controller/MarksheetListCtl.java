@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import com.rays.pro4.Bean.BaseBean;
 import com.rays.pro4.Bean.MarksheetBean;
 import com.rays.pro4.Exception.ApplicationException;
-import com.rays.pro4.Model.CollegeModel;
 import com.rays.pro4.Model.MarksheetModel;
 import com.rays.pro4.Util.DataUtility;
 import com.rays.pro4.Util.PropertyReader;
@@ -31,10 +30,9 @@ import com.rays.pro4.Util.ServletUtility;
 */
 
 /**
- * Servlet implementation class MarksheetlistCtl
- * 
- * @author Suraj Sahu
- */
+* Servlet implementation class MarksheetlistCtl
+*  @author  Suraj Sahu
+*/
 @WebServlet(name = "MarksheetListCtl", urlPatterns = { "/ctl/MarksheetListCtl" })
 public class MarksheetListCtl extends BaseCtl {
 
@@ -49,14 +47,9 @@ public class MarksheetListCtl extends BaseCtl {
 	 */
 	@Override
 	protected void preload(HttpServletRequest request) {
-		MarksheetModel model = new MarksheetModel();
-
-		CollegeModel cmodel = new CollegeModel();
-
+		MarksheetModel model= new  MarksheetModel();
 		try {
 			List list = model.list(0, 0);
-			List clist = cmodel.list();
-			request.setAttribute("CollegeList", clist);
 			request.setAttribute("rollNo", list);
 		} catch (ApplicationException e) {
 			e.printStackTrace();

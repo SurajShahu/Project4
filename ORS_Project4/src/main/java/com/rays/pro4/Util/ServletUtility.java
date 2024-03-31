@@ -81,7 +81,10 @@ public class ServletUtility {
 	 */
 	public static void handleException(Exception e, HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		// System.out.println("servlet ulitity error ctl------------>");
 		request.setAttribute("exception", e);
+//        response.sendRedirect(ORSView.ERROR_CTL);
+//        
 	}
 
 	/**
@@ -204,6 +207,7 @@ public class ServletUtility {
 	 */
 	public static void setBean(BaseBean bean, HttpServletRequest request) {
 		request.setAttribute("bean", bean);
+
 	}
 
 	/*
